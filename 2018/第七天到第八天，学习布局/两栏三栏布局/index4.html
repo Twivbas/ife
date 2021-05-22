@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三栏布局，左侧固定宽度，右侧固定宽度，中间部分宽度随浏览器宽度变化而自适应</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    /*Float实现
+    .left {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+        float: left;
+    }
+    .right {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        float: right;
+    }
+    .center {
+        background-color: blue;
+        height: 100px;
+        width: calc(100% - 200px);
+        float: left;
+    }
+    */
+
+    /*Position实现
+    .left {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+    }
+    .right {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        
+        position: relative;
+        top: -200px;
+        left: calc(100% - 100px);
+        
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+    .center {
+        background-color: blue;
+        height: 100px;
+        width: calc(100% - 200px);
+        
+        position: relative;
+        top: -100px;
+        left: 100px;
+
+        position: absolute;
+        top: 0;
+        left: 100px;
+
+        position: fixed;
+        top: 0;
+        left: 100px;
+    }*/
+    
+
+    /*Flexbox实现
+    .main {
+        display: flex;
+    }
+    .left {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+    }
+    .right {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+    }
+    .center {
+        background-color: blue;
+        height: 100px;
+        width: 100px;
+        flex: 1;
+    }*/
+
+    /*margin*/
+    .left {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+    }
+    .right {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        margin-left: calc(100% - 100px);
+        margin-top: -100px;
+    }
+    .center {
+        background-color: blue;
+        height: 100px;
+        width: calc(100% - 200px);
+        margin-top: -100px;
+        margin-left: 100px;
+    }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两栏布局，左侧占30%宽度，右侧占70%宽度</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    /*Float实现
+    .left {
+        background-color: green;
+        width: 30%;
+        height: 100px;
+        float: left;
+    }
+    .right {
+        background-color: red;
+        width: 70%;
+        height: 100px;
+        float: right;
+    }*/
+
+    /*Position实现
+    .left {
+        background-color: green;
+        width: 30%;
+        height: 100px;
+    }
+    .right {
+        background-color: red;
+        width: 70%;
+        height: 100px;
+        
+        position: relative;
+        top: -100px;
+        left: 30%;
+        
+        
+        position: absolute;
+        top: 0;
+        left: 30%;
+        
+        position: fixed;
+        top: 0;
+        left: 30%;
+    }*/
+
+    /*Flexbox实现
+    .main {
+        display: flex;
+    }
+    .left {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+        flex: 3;
+    }
+    .right {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        flex: 7;
+    }*/
+
+    /*margin*/
+    .left {
+        background-color: green;
+        width: 30%;
+        height: 100px;
+    }
+    .right {
+        background-color: red;
+        width: 70%;
+        height: 100px;
+        margin-left: 30%;
+        margin-top: -100px;
+    }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
