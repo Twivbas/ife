@@ -1,0 +1,485 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1600px;
+    color: white;
+}
+
+.sign-up {
+    background: url(img/Background1.png) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 1000px;
+    display: flex;
+}
+
+.sign-up-f {
+    width: 970px;
+    margin: 200px auto;
+    text-align: center;
+}
+
+.sign-up-f p:first-child {
+    font-size: 62px;
+    margin: 0 auto 85px;
+}
+
+.sign-up-f p:nth-child(2) {
+    width: 780px;
+    margin: 0 auto 50px;
+}
+
+.sign-up-f .create {
+    border: 1px solid gray;
+    margin: 105px auto 200px;
+    padding: 60px auto 50px;
+}
+
+.sign-up-f .create h4 {
+    font-size: 16px;
+    margin: 50px auto 20px;
+}
+
+.sign-up-f .create p {
+    margin: 0 auto;
+    padding: 0;
+    font-size: 12px;
+}
+
+.sign-up-f .create .account {
+    margin: 45px auto 50px;
+}
+
+.sign-up-f .create .account input {
+    background-color: transparent;
+    border: 1px solid gray;
+    width: 290px;
+    height: 50px;
+    margin: 0 10px;
+    padding-left: 20px;
+    font-size: 12px;
+    color: white;
+}
+
+.sign-up-f .create .account button {
+    width: 125px;
+    height: 50px;
+    font-size: 12px;
+    background-color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+
+.content {
+    width: 100%;
+    height: 710px;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+}
+
+.content-f {
+    width: 1050px;
+    margin: 55px auto;
+}
+
+.content-f header {
+    text-align: center;
+}
+
+.content-f header p:first-child {
+    font-size: 14px;
+}
+
+.content-f header p:nth-child(2) {
+    font-size: 42px;
+    width: 800px;
+    margin: 45px auto 90px;
+}
+
+.content-f .four-parts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-f .four-parts .part {
+    flex: 1 420px;
+    margin-bottom: 80px;
+}
+
+.content-f .four-parts .part .icon {
+    float: left;
+    margin: 5px 30px 30px;
+    width: 50px;
+    height: 50px;
+}
+
+.content-f .four-parts .part .right {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.content-f .four-parts .part .right p:first-child {
+    margin: 0;
+    font-size: 20px;
+}
+
+
+.features {
+    width: 100%;
+    height: 800px;
+    background: url(img/Background2.png);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.features .left {
+    width: 520px;
+    height: 450px;
+    margin-left: 230px;
+}
+
+.features .left article p:first-child {
+    font-size: 42px;
+    width: 400px;
+}
+
+.features .left article p:nth-child(2) {
+    font-size: 18px;
+    width: 400px;
+    margin: 45px 0 55px;
+}
+
+.features .left .btn1 {
+    width: 240px;
+    height: 60px;
+    background-color: white;
+    color: black;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.features .left .btn2 {
+    width: 240px;
+    height: 60px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.features .right {
+    padding: 30px 0 30px 60px;
+    border: 1px solid white;
+    border-radius: 35px 0 0 35px;
+}
+
+.features .right::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: relative;
+    top: -290px;
+    left: -30px;
+}
+
+.products {
+    width: 100%;
+    height: 580px;
+    background-color: white;
+    text-align: center;
+    color: black;
+    overflow: hidden;
+}
+
+.products header h1 {
+    font-size: 42px;
+    font-weight: 400;
+    margin: 100px auto 90px;
+}
+
+.products .main {
+    width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.products .main .product p {
+    font-size: 16px;
+    width: 260px;
+    margin-top: 40px;
+}
+
+
+.photoes {
+    width: 100%;
+    height: 1000px;
+    color: black;
+    background-color: white;
+    overflow: hidden;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.photoes .main {
+    width: 1000px;
+    margin: 110px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-around;
+    flex-wrap: wrap;
+}
+
+.photoes .main article {
+    width: 330px;
+}
+
+.photoes .main article h4 {
+    margin: 75px 0 35px 0;
+}
+
+.photoes .main article p {
+    font-size: 16px;
+    width: 310px;
+}
+
+.photoes .main .photo {
+    margin-bottom: 80px;
+}
+
+.crew {
+    width: 100%;
+    height: 1084px;
+    background-color: white;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid gray;
+}
+
+.crew .crew-f {
+    width: 970px;
+    margin: 100px auto;
+}
+
+.crew .crew-f h1 {
+    font-size: 42px;
+    color: black;
+}
+
+.crew .crew-f > p {
+    font-size: 18px;
+    width: 700px;
+    margin: 35px auto 60px;
+    color: black;
+}
+
+.crew .show {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.crew .show > img {
+    background-color: black;
+}
+
+.crew .show .background {
+    width: 470px;
+    height: 340px;
+    background: url(img/Background\ 拷贝.png);
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.crew .show .background:hover {
+    opacity: 1;
+}
+
+.crew .crew-photo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.crew .show .background h4 {
+    margin: 110px auto 20px;
+}
+
+.crew .show .background > p {
+    margin-bottom: 40px;
+    font-size: 12px;
+    color: gray;
+} 
+
+.crew .show .background .social {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.crew .show .background .social .social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    margin: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contacts {
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+}
+
+.contacts .contacts-m {
+    width: 960px;
+    margin: 70px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts .contacts-m .left {
+    width: 470px;
+    height: 560px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contacts .contacts-m .left h4 {
+    font-size: 16px;
+    margin: 50px auto 15px;
+}
+
+.contacts .contacts-m .left input {
+    width: 370px;
+    height: 50px;
+    padding: 20px; 
+    font-size: 16px;
+}
+
+.contacts .contacts-m .left textarea {
+    width: 370px;
+    height: 145px;
+    padding: 20px; 
+    font-size: 16px;
+    resize: none;
+}
+
+.contacts .contacts-m .right {
+    width: 370px;
+    padding-top: 85px;
+}
+
+.contacts .contacts-m .right h1 {
+    font-size: 42px;
+    margin: 0;
+}
+
+.contacts .contacts-m .right > p {
+    font-size: 16px;
+    margin: 40px auto 50px;
+}
+
+.contacts .contacts-m .left .contacts-btn {
+    color: white;
+    background-color: black;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 65px;
+}
+
+.contacts .contacts-m .right .info {
+    width: 360px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contacts .contacts-m .right .info .text {
+    width: 320px;
+}
+
+.contacts .contacts-m .right .info .icon {
+    display: flex;
+    align-items: center;
+}
+
+
+footer {
+    width: 100%;
+    height: 420px;
+    background-color: black;
+    overflow: hidden;
+    color: gray;
+    font-size: 16px;
+}
+
+footer .footer-m {
+    width: 1180px;
+    margin: 85px auto auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footer-m ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer .footer-m .footer-list ul li {
+    margin-bottom: 30px;
+}
+
+footer .footer-m .title {
+    color: white;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+footer .footer-m .footer-right {
+    width: 270px;
+}
+
+footer .footer-m .footer-right ul li:nth-child(2) {
+    font-size: 18px;
+    margin: 20px 0 40px;
+}
+
+footer .footer-m .footer-right .footer-icon {
+    width: 230px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footer-m .footer-right .footer-icon img {
+    filter: brightness(0.5);
+}
