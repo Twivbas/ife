@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简历</title>
+  <link rel="stylesheet" href="CSS/style_3.css">
+  <style>
+      .good {
+          position: fixed;
+          top: 17px;
+          left: 200px;
+          color: red;
+      }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>简历</h1>
+        <span class="good"></span>
+    </header>
+    <section>
+        <h2>基本信息</h2>
+        <article>
+            <p>
+                <span><b>姓名</b> 张三</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><b>性别</b> 男</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><b>应聘职位</b> Web前端工程师</span>
+                </p>
+        </article>
+    </section>
+    <section>
+        <h2>联系方式</h2>
+        <article>
+            <p>
+                <span><b>手机</b> 12312341234</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><b>Email</b> <a href="#">joinefe@baidu.com</a></span>&nbsp;&nbsp;&nbsp;&nbsp;<span><b>个人主页</b> <a href="#">Github</a></span>
+                </p>
+        </article>
+    </section>
+    <section>
+        <h2>能力描述</h2>
+        <article>
+            <div>
+                <h4>技术能力</h4>
+                <p>熟练掌握HTML,CSS,JavaScript</p>
+                </div>
+                <div>
+                <h4>综合能力</h4>
+                <p>良好的沟通，主动积极，努力勤奋</p>
+                </div>
+        </article>
+    </section>
+    <section>
+        <h2>教育经历</h2>
+        <article>
+            <div>
+                <h4>本科</h4>
+                <p>百度前端技术学院小薇学院</p>
+            </div>
+            <div>
+                <h4>研究生</h4>
+                <p>百度前端技术学院大斌学院</p>
+            </div>
+        </article>
+    </section>
+    <section>
+        <h2>项目经历</h2>
+        <article>
+            <div >
+                <h4>小度小度</h4>
+                <p>作为前端工程师角色参与了ABC组件的开发</p>
+                </div>
+                <div>
+                <h4>SAN Doc</h4>
+                <p>作为文档工程师参与了SAN Doc编写</p>
+                </div>
+        </article>
+    </section>
+    <section class="add-js" >
+        <button id="hi">Hi</button>
+        <button id="fav">我的爱好</button>
+    </section>
+
+    <script>
+        //输出不同的问候语
+        window.onload = function () {
+            let result;
+            let time = new Date().getHours();
+            if (time >= 5 && time <= 11) {
+                result = '早上好';
+            } else if (time > 11 && time <= 18) {
+                result = '下午好';
+            } else {
+                result = '晚上好';
+            }
+
+            let node = document.getElementsByClassName('good')[0];
+            node.innerHTML = result;
+        }
+
+
+        let hi = document.getElementById('hi');
+        hi.onclick = function () {
+            console.log('Hi~');
+        }
+
+        let fav = document.getElementById('fav');
+        fav.onclick = function() {
+            let sp = document.createElement('span');
+            let content = document.createTextNode('唱跳rap');
+            sp.appendChild(content);
+            
+            fav.after(sp, '篮球');
+        }
+    </script>
+  
+</body>
+</html>
