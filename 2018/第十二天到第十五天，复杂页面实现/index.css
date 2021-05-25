@@ -1,0 +1,627 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #585d68;
+}
+
+.navigation {
+    width: 350px;
+    height: 100vh;
+    background-color: skyblue;
+    position: relative;
+}
+
+.messages {
+    width: calc(100% - 350px);
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.navigation .left {
+    width: 100px;
+    height: 100vh;
+    background-color: #1d2531;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+    
+}
+
+.navigation .right {
+    width: 250px;
+    height: 100vh;
+    background-color: #222c3c;
+    position: fixed;
+    left: 100px;
+    color: #b7c0cd;
+    font-size: 14px;
+}
+
+.navigation .left .bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation .left .items {
+    height: 300px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navigation .left .items .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation .left .items .item1 {
+    background-color: #259bf3;
+}
+
+.navigation .left .items .item2 {
+    background-color: #917be4;
+}
+
+.navigation .left .items .item3 {
+    background-color: #e24225;
+}
+
+.navigation .left .items .item4 {
+    border: 3px solid #2d3848;
+}
+
+.navigation .left .items .item1::after {
+    content: "";
+    display: inline;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #238fe1;
+    position: absolute;
+    left: -3px;
+    top: 46px;
+}
+
+.navigation .right .right-m {
+    width: 190px;
+    margin: 0 auto;
+}
+
+.navigation .right .right-m .part {
+
+    border-bottom: 1px solid #2a3547;
+}
+
+.navigation .right .right-m .part header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin: 30px 0 25px;
+}
+
+.navigation .right .right-m .part header span {
+    color: #3d4858;
+}
+
+.navigation .right .right-m .part ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation .right .right-m .part .products {
+    width: 119px;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.navigation .right .right-m .part .products .content {
+    width: 85px;
+    margin-left: 15px;
+}
+
+.navigation .right .right-m .menu {
+    height: 239px;
+    margin-top: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.navigation .right .right-m .menu ul li {
+    margin-bottom: 13px;
+}
+
+
+.navigation .right .right-m .product-p {
+    height: 220px;
+    overflow: hidden;
+}
+
+.navigation .right .right-m .product-p ul li {
+    margin-bottom: 18px;
+} 
+
+.navigation .right .right-m .dashboard {
+    border: none;
+    overflow: hidden;
+    
+}
+
+.navigation .right .right-m .dashboard ul li {
+    margin-bottom: 20px;
+}
+
+.navigation .right .capacity {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    margin-bottom: 20px;
+}
+
+.navigation .right .capacity p span {
+    color: white;
+}
+
+.navigation .right .capacity .down {
+    width: 190px;
+    height: 5px;
+    background-color: #2d3848;
+    border-radius: 3px;
+}
+
+.navigation .right .capacity .up {
+    width: 34.4375px;
+    height: 5px;
+    background-color: #9582e4;
+    position: absolute;
+    bottom: 0.5px;
+    border-radius: 3px;
+}
+
+.navigation .right .right-m .menu ul .info-54::after {
+    content: "54";
+    display: block;
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    top: 102px;
+    left: 158px;
+    background-color: #2ca0f7;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+}
+
+.navigation .right .right-m .dashboard .info-21::after {
+    content: "21";
+    display: block;
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    top: 545px;
+    left: 188px;
+    background-color: #2ca0f7;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+}
+
+.navigation .right .right-m .dashboard .info-21::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 552px;
+    left: -4px;
+    background-color: #2ca0f7;
+    border-radius: 50%;
+}
+
+.navigation .right .right-m .dashboard .warning::after {
+    content: "!";
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 623px;
+    left: 194px;
+    background-color: #e34226;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+}
+
+.messages header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #d9dde3;
+}
+
+.messages .chat {
+    position: relative;
+    
+}
+
+.messages .chat .friends {
+    height: 980px;
+
+    width: 400px;
+    border-right: 1px solid #d9dde3;
+}
+
+.messages .chat .notification {
+    height: 980px;
+
+    width: calc(100% - 400px);
+    position: absolute;
+    top: 0;
+    left: 400px;
+}
+
+.messages header .user {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-right: 30px;
+}
+
+.messages header .user .status {
+    position: absolute;
+    top: 25.5px;
+    left: 32px;
+}
+
+.messages header .user .user-name p {
+    margin: 5px;
+}
+
+.messages header .user .user-name p:first-child {
+    font-size: 16px;
+    color: #2399f1;
+}
+
+.messages header .user .user-name p:nth-child(2) {
+    font-size: 14px;
+    color: #b5b5b5;
+}
+
+.messages header span {
+    font-size: 24px;
+    color: #354052;
+    margin-left: 30px;
+}
+
+.messages .chat .friends .search {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #d9dde3;
+    position: relative;
+}
+
+.messages .chat .friends .search input {
+    width: 340px;
+    height: 35px;
+    margin: 15px 30px;
+    border: 1px solid #d9dde3;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+.messages .chat .friends .search .search-icon {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+}
+
+.messages .chat .friends .friends-list .friend {
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #d9dde3;
+    font-size: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.messages .chat .friends .friends-list .friend > p {
+    width: 350px;
+    margin: 0 auto;
+    color: #585d68;
+}
+
+.messages .chat .friends .friends-list .friend .friend-info {
+    width: 350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages .chat .friends .friends-list .friend .friend-info p {
+    margin: 0;
+    color: #b5b5b5;
+}
+
+.messages .chat .friends .friends-list .friend .friend-info .right {
+    width: 285px;
+}
+
+.friends-list .friend .friend-info .right .friend-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.friends-list .friend .friend-info .right .friend-name > span {
+    font-size: 16px;
+    color: #585d68;
+}
+
+.friends-list .friend .friend-info .right .friend-name .last-time {
+    color: #7f8fa4;
+    font-size: 14px;
+}
+
+.messages .chat .friends .friends-list .online {
+    border-left: 3px solid #2ca0f7;
+    overflow: hidden;
+}
+
+.messages .chat .friends .friends-list .online .friend-info .right .friend-name span {
+    color: #2ca0f7;
+    padding-left: 16px;
+}
+
+.messages .chat .friends .friends-list .online .friend-info .right .friend-name .talking::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #2ca0f7;
+    border-radius: 50%;
+    position: absolute;
+    left: 95px;
+    top: 90px;
+}
+
+.messages .chat .friends .friends-list .online > p::after {
+    content: "4";
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 156px;
+    left: 368px;
+    background-color: #2ca0f7;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+}
+
+
+.messages .chat .notification header {
+    height: 70px;
+}
+
+.messages .chat .notification header .tools {
+    width: 290px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages .chat .notification header .tools ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.messages .chat .notification header .tools ul li {
+    width: 37px;
+    height: 32px;
+    border: 1px solid #d9dde3;
+    background-color: #fcfdfd;
+    text-align: center;
+}
+
+.messages .chat .notification header .tools ul .left-border {
+    border-radius: 5px 0 0 5px; 
+}
+
+.messages .chat .notification header .tools ul .right-border {
+    border-radius:  0 5px 5px 0; 
+}
+
+.messages .chat .notification header > span {
+    font-size: 18px;
+    color: #585d68;
+}
+
+.messages .chat .notification header .tools span {
+    font-size: 14px;
+    color: #56688a;
+    line-height: 32px;
+    border-left: 1px solid #d9dde3;
+    padding-left: 25px;
+    margin: 0;
+}
+
+.messages .chat .notification header > span::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #1bb934;
+    position: absolute;
+    left: 145px;
+    top: 33px;
+    border-radius: 50%;
+}
+
+.messages .chat .notification .chat-record .message .main {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: #585d68;
+}
+
+.messages .chat .notification .chat-record .message .main .avatar {
+    margin-right: 30px;
+}
+
+.messages .chat .notification .chat-record .message .main .content {
+    width: 739px;
+}
+
+.messages .chat .notification .chat-record .message .main .content p {
+    margin: 10px 0 0;
+}
+
+.messages .chat .notification .chat-record .message .main .content span:first-child {
+    font-size: 16px;
+}
+
+.messages .chat .notification .chat-record .message .main .content span:nth-child(2) {
+    font-size: 14px;
+    color: #7f8fa4;
+}
+
+.messages .chat .notification .chat-record .old-line {
+    width: 100%;
+    border-top: 1px solid #d9dde3;
+}
+
+.messages .chat .notification .chat-record .old-line::after {
+    content: "Tuesday";
+    display: block;
+    width: 60px;
+    height: 25px;
+    color: #7f8fa4;
+    background-color: white;
+    position: absolute;
+    top: 368px;
+    left: calc(50% - 50px);
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+    padding: 0 20px;
+    z-index:1;
+}
+
+.messages .chat .notification .chat-record .new-line {
+    width: 100%;
+    border-top: 1px solid #2399f1;
+    position: relative;
+    margin-top: 15px;
+}
+
+.messages .chat .notification .chat-record .new-line::after {
+    content: "New Messages";
+    display: block;
+    width: 110px;
+    height: 25px;
+    color: #2399f1;
+    background-color: white;
+    position: absolute;
+    top: -15px;
+    left: calc(50% - 75px);
+    font-size: 14px;
+    text-align: center;
+    line-height: 25px;
+    padding: 0 20px;
+    z-index:1;
+}
+
+.messages .chat .notification .chat-record .pictures {
+    width: 810px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.messages .chat .notification .chat-record .pictures .picture {
+    margin-right: 15px;
+}
+
+.messages .chat .notification .chat-record .pictures .picture:first-child {
+    margin-left: 76px;
+}
+
+.messages .chat .notification .chat-record .pictures .cursor-background {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    position: relative;
+    top: 25px;
+    left: -118px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messages .chat .notification .chat-record .talking-input {
+    width: 824px;
+    height: 54px;
+    margin: 0 auto;
+    display: flex;
+    position: fixed;
+    bottom: 25px;
+    right: calc(50% - 787px);
+}
+
+.messages .chat .notification .chat-record .talking-input .plus {
+    height: 54px;
+    width: 54px;
+    border: 1px solid #d9dde3;
+    background-color: #fcfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messages .chat .notification .chat-record .talking-input input {
+    width: 770px;
+    height: 54px;
+    border: 1px solid #d9dde3;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #56688a;
+}
+
+.messages .chat .notification .chat-record .talking-input input:focus {
+    outline: none;
+    line-height: 100px;
+}
