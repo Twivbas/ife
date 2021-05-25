@@ -1,0 +1,53 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+
+h1 {
+    font-size: 1em;
+    background-color: gray;
+    color: white;
+    margin: 0;
+    padding: 15px 0 15px 15px;
+}
+
+h2 {
+    font-size: 1em;
+    float: left;
+    background-color: lightgrey;
+    margin: 0;
+    width: 120px;
+    margin-bottom: -1000px;
+    padding-bottom: 1000px;
+    text-align: center;
+    line-height: calc(18.7831vh - 12.2728px);
+}
+
+section {
+    overflow: hidden;
+    border-bottom: 1px solid gray;
+}
+
+article {
+    float: left;
+    height: calc(18.7831vh - 12.2728px);
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+h4 {
+    display: inline;
+}
+
+h4 + p {
+    display: inline;
+}
+
+article > p {
+    margin: 0;
+}
