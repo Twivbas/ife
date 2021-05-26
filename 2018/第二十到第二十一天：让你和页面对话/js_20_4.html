@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+
+    <script>
+        let obj = document.getElementById('fade-obj');
+        let btn = document.getElementById('fade-btn');
+        let t1, t2, mode = 1;
+        
+        btn.onclick = function () {
+            if (mode === 1) {
+                btn.disabled = true;
+                obj.style.opacity = 1;
+                t1 = setInterval(function () {
+                    obj.style.opacity -= 0.1;
+
+                    if (obj.style.opacity <= 0) {
+                        clearInterval(t1);
+                        btn.disabled = false;
+                        btn.innerHTML = '淡入';
+                        mode = 0;
+                    }
+                }, 100);
+            }
+            if (mode === 0) {               
+                btn.disabled = true;
+                obj.style.opacity = 0;
+                t2 = setInterval(function () {
+                    obj.style.opacity = +obj.style.opacity + 0.1;
+                    //为什么这里opacity像赋值，而没有递增？但是可以递减
+                    //obj.style.opacity是string类型，为什么
+                    //因为string减法运算会自动转换类型，string加法就不会自动转换类型
+                    //'3' - 1 = 2  '3' + 1 = '31'
+
+                    if (obj.style.opacity >= 1) {
+                        clearInterval(t2);
+                        btn.disabled = false;
+                        btn.innerHTML = '淡出';
+                        mode = 1;
+                    }
+                }, 100);
+            }
+        }
+
+          
+    </script>
+</body>
+</html>

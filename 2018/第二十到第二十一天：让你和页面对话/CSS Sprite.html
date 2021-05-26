@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Sprite动画</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="animation"></div>
+
+    <script>
+        let anim = document.getElementById('animation');
+        let t, h = 0;
+        anim.style.cssText = "width: 480px;height: 480px;background: url(./erik_ce204002.jpg) no-repeat;";
+
+        t = setInterval(function () {
+            anim.style.backgroundPosition = `0 ${h}%`;
+            h += 6.25;
+            if (h > 100) {
+                h = 0;
+                // clearInterval(t);
+            }
+        }, 100)
+    </script>
+</body>
+</html>
