@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>队列</title>
+</head>
+<body>
+    <input id="queue-input" type="text">
+    <!-- <p id="queue-cont">队列内容：apple-&gt;pear</p>  -->
+    <p id="queue-cont">队列内容：apple&lt;-pear</p>    
+    <button id="in-btn" onclick="addEle()">入队</button>
+    <button id="out-btn" onclick="delEle()">出队</button>
+    <button id="font-btn" onclick="printHead()">打印队头元素内容</button>
+    <button id="empty-btn" onclick="isEmpty()">判断队列是否为空</button>
+
+    <script>
+
+    var queue = ["apple", "pear"];
+
+    let input = document.getElementById('queue-input');
+    let cont = document.getElementById('queue-cont');
+
+    //队头对应数组中最后一个元素
+    function addEle() {
+        queue.unshift(input.value);
+        console.log(queue);
+        cont.innerHTML = queue.join('->');
+    }
+
+    function delEle() {
+        queue.pop();
+        console.log(queue);
+        cont.innerHTML = queue.join('->');
+    }
+
+    function printHead() {
+        console.log(queue[queue.length - 1]);
+    }
+
+    function isEmpty() {
+        if (queue.length === 0) {
+            console.log(true);
+            return true;
+        }
+        console.log(false);
+        return false;
+    }
+    
+    //队头对应数组中第一个元素
+    function addEle() {
+        queue.push(input.value);
+        console.log(queue);
+        cont.innerHTML = queue.join('<-');
+    }
+
+    function delEle() {
+        queue.shift();
+        console.log(queue);
+        cont.innerHTML = queue.join('<-');
+    }
+
+    function printHead() {
+        console.log(queue[0]);
+    }
+    </script>
+</body>
+</html>

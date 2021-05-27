@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排序</title>
+</head>
+<body>
+    <script>
+
+    var arr1 = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+
+    function up(a, b) {
+        return a - b;
+    }
+    function down(a, b) {
+        return b - a;
+    }
+
+    arr1 = arr1.sort(up);
+    console.log(arr1);
+    arr1 = arr1.sort(down);
+    console.log(arr1);
+
+    var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+
+    arr2 = arr2.sort();
+    console.log(arr2);
+    arr2 = arr2.reverse();
+    console.log(arr2);
+
+    var arr3 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+
+    function down2(a, b) {
+        return b[1] - a[1];
+    }
+    arr3 = arr3.sort(down2);
+    console.log(arr3);
+
+    var arr4 = [
+        {
+            id: 1,
+            name: 'candy',
+            value: 40
+        }, {
+            id: 2,
+            name: 'Simon',
+            value: 50
+        }, {
+            id: 3,
+            name: 'Tony',
+            value: 45
+        }, {
+            id: 4,
+            name: 'Annie',
+            value: 60
+        }
+    ];
+
+    function upValue(a, b) {
+        return
+    }
+    arr4 = arr4.sort((a, b) => a.value - b.value);
+    console.log(arr4);
+    </script>
+</body>
+</html>
