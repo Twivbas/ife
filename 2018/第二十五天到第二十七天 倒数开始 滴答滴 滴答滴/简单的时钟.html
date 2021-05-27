@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的时钟</title>
+</head>
+<body>
+    <div id="time1"></div><div id="time2"></div>
+    
+    <script>
+    //每秒自动更新的时钟
+    let time = document.getElementById('time');
+    //声明变量
+    let date;
+    let year;
+    let month;
+    let day;
+    let week;
+    let h;
+    let m;
+    let s;
+
+    //根据某个日期返回这一天是星期几
+    function getToday(date, way = 0) {
+        let day = date.getDay();
+        if (way === 0) {
+            if (day === 0) {
+                day = '日';
+            } else if (day === 1) {
+                day = '一';
+            } else if (day === 2) {
+                day = '二';
+            } else if (day === 3) {
+                day = '三';
+            } else if (day === 4) {
+                day = '四';
+            } else if (day === 5) {
+                day = '五';
+            } else {
+                day = '六';
+            }
+        }
+        if (way === 1) {
+            if (day === 0) {
+                day = 'Sunday';
+            } else if (day === 1) {
+                day = 'Monday';
+            } else if (day === 2) {
+                day = 'Tuesday';
+            } else if (day === 3) {
+                day = 'Wednesday';
+            } else if (day === 4) {
+                day = 'Thursday';
+            } else if (day === 5) {
+                day = 'Friday';
+            } else {
+                day = 'Saturday';
+            }
+        }
+        return day;
+    }
+
+    //包装时分秒
+    function addZero(a) {
+        if (a < 10) {
+            a = '0' + a;
+        }
+        return a;
+    }
+
+    let apm = false;
+    //变量赋值初始化时间
+    function init(way = 0) {
+        if (way === 0) {
+            date = new Date();
+            year = date.getFullYear();
+            month = addZero(date.getMonth() + 1);
+            day = addZero(date.getDate());
+            week = getToday(date);
+            h = addZero(date.getHours());
+            m = addZero(date.getMinutes());
+            s = addZero(date.getSeconds());
+        }
+        if (way === 1) {
+            date = new Date();
+            year = date.getFullYear();
+            month = addZero(date.getMonth() + 1);
+            day = addZero(date.getDate());
+            h = addZero(date.getHours());
+            m = addZero(date.getMinutes());
+            s = addZero(date.getSeconds());
+            
+            week = getToday(date, 1);
+            if (h >= 12) {
+                if (h > 12) {
+                    h -= 12;
+                }
+                h = addZero(h);
+                apm = true;
+            }
+        }
+    }
+
+    //包装结果,渲染到页面
+    function getResult1() {
+        let r;
+        r = `${year}年${month}月${day}日 星期${week} ${h}:${m}:${s}`;
+        time1.innerHTML = r;
+    }
+
+    function getResult2() {
+        let r;
+        let addition = apm ? 'PM' : 'AM';
+        r = `${year}-${month}-${day} ${week} ${h}:${m}:${s} ${addition}`;
+        time2.innerHTML = r;
+    }
+
+    let t1 = setInterval(() => { init(); getResult1();}, 1000);
+    let t2 = setInterval(() => { init(1); getResult2();}, 1000);
+    //  clearInterval(t);
+
+    </script>
+</body>
+</html>

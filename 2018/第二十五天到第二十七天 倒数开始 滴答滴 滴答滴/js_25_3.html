@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_25_3</title>
+</head>
+<body>
+    <select id="year-select">
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        ……
+        <option value="2032">2032</option>
+    </select>
+    
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="12">12</option>
+    </select>
+    
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="31">31</option>
+    </select>
+    
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>        
+        ……
+        <option value="23">23</option>
+    </select>
+    
+    <select id="minite-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        ……
+        <option>59</option>
+    </select>
+    
+    <select id="second-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        ……
+        <option>59</option>
+    </select>
+    
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+
+    <script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    let result = $('result-wrapper');
+    let year = $('year-select');
+    let month = $('month-select');
+    let day = $('day-select');
+    let hour = $('hour-select');
+    let minite = $('minite-select');
+    let second = $('second-select');
+    let y, m, d, h, min, s;
+
+    //操作DOM生成options
+    function createOptions(node, a, b) {
+        for (let i = a; i < b; i++) {
+            if (node === hour || node === minite || node === second) {
+                i = i < 10 ? '0'+ i : i;
+            }
+            let option = document.createElement('option');
+            option.value = i;
+            option.innerHTML = i;
+            node.insertBefore(option, node.lastElementChild);
+        }
+    }
+
+    //初始化select
+    function init() {
+        createOptions(year, 2003, 2032);
+        createOptions(month, 3, 12);
+        createOptions(day, 3, 31);
+        createOptions(hour, 2, 23);
+        createOptions(minite, 2, 59);
+        createOptions(second, 2, 59);
+    }
+
+    //根据现实修改DOM option,去除不存在的日期
+    function trueTime() {
+        //双月
+        if (month.value % 2 === 0) {
+            if (month.value === '2') {
+                let days = 28;
+                if ((year.value % 4 === 0 && year.value % 100 !== 0) || year.value % 400 === 0) {
+                    days = 29;
+                }
+                while (day.length > days) {
+                    day.removeChild(day.lastChild);
+                }
+                return;
+            }
+            if (day.children.length > 30) {
+                day.removeChild(day.lastChild);
+            }
+            if (day.children.length < 30) {
+                while (day.children.length < 30) {
+                    let option = document.createElement('option');
+                    option.value = +day.lastElementChild.value + 1;
+                    option.innerHTML = +day.lastElementChild.value + 1;
+                    day.appendChild(option, day.lastElementChild);
+                }
+            }
+        } else if (month.value % 2 === 1) { 
+            //单月
+            if (day.children.length < 31) {
+                while (day.children.length < 31) {
+                    let option = document.createElement('option');
+                    option.value = +day.lastElementChild.value + 1;
+                    option.innerHTML = +day.lastElementChild.value + 1;
+                    day.appendChild(option, day.lastElementChild);
+                }
+            }
+        }       
+    }
+
+
+    //main
+    init();
+    trueTime();
+
+    //选择过select后,开关on,时钟开始自动更新
+    let btn = 0, t;
+    //给每个select标签添加onchange事件
+    let node = document.querySelectorAll('select');
+    for (let v of [...node]) {
+        v.onchange = function () {
+            trueTime();
+            makeResult();
+            if (t == undefined) {
+                if (btn === 1) {
+                    t = setInterval(makeResult, 1000);
+                }
+            }
+            trueTime();
+        }
+    }
+    
+    //转换周几格式
+    function getToday(day) {
+        if (day === 0) {
+                day = '日';
+            } else if (day === 1) {
+                day = '一';
+            } else if (day === 2) {
+                day = '二';
+            } else if (day === 3) {
+                day = '三';
+            } else if (day === 4) {
+                day = '四';
+            } else if (day === 5) {
+                day = '五';
+            } else {
+                day = '六';
+        }
+        return day;
+    }
+
+    //首位补0
+    function addZero(a) {
+        if (a < 10) {
+            a = '0' + a;
+        }
+        return a;
+    }
+
+    let selectDate, week;
+    //包装结果
+    function makeResult() {
+        if (btn === 0) {
+            btn = 1;
+        }
+        //计算selectDate
+        y = year.value;
+        m = month.value;
+        d = day.value;
+        h = addZero(hour.value);
+        min = addZero(minite.value);
+        s = addZero(second.value);
+        selectDate = new Date(`${y}-${m}-${d} ${h}:${min}:${s}`);
+        week = getToday(selectDate.getDay());
+
+        //计算时间差
+        let time1 = selectDate.getTime();
+        let time2 = new Date().getTime();
+        let text = time2 > time1 ? '已经过去' : '还有';
+        let diffD, diffH, diffM, diffS;
+        [diffD, diffH, diffM, diffS] = getDiff(time1, time2);
+
+        let r = `现在距离 ${y}年${m}月${d}日星期${week} ${h}:${min}:${s} ${text} ${diffD} 天 ${diffH} 小时 ${diffM} 分 ${diffS} 秒`;
+        result.innerHTML = r;
+    }
+
+    //计算时间差
+    function getDiff(time1, time2) {
+        let diff = Math.abs(time2 - time1);
+        diffD = Math.floor(diff / (3600 * 24 * 1000));
+        diff = diff % (3600 * 24 * 1000);
+        diffH = Math.floor(diff / (3600 * 1000));
+        diff = diff % (3600 * 1000);
+        diffM = Math.floor(diff / (60 * 1000));
+        diffS = Math.floor(diff % (60 * 1000) / 1000); 
+        return [diffD, diffH, diffM, diffS];
+    }
+           
+    </script>
+</body>
+</html>
