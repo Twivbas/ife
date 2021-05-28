@@ -66,6 +66,28 @@
     let second = $('second-select');
     let y, m, d, h, min, s;
 
+    //main
+    init();
+    trueTime();
+
+    //选择过select后,开关on,时钟开始自动更新
+    let btn = 0, t;
+    //给每个select标签添加onchange事件
+    let node = document.querySelectorAll('select');
+    for (let v of [...node]) {
+        v.onchange = function () {
+            trueTime();
+            makeResult();
+            if (t == undefined) {
+                if (btn === 1) {
+                    t = setInterval(makeResult, 1000);
+                }
+            }
+            trueTime();
+        }
+    }
+
+
     //操作DOM生成options
     function createOptions(node, a, b) {
         for (let i = a; i < b; i++) {
@@ -89,7 +111,7 @@
         createOptions(second, 2, 59);
     }
 
-    //根据现实修改DOM option,去除不存在的日期
+    //根据现实修改DOM option,增删日期
     function trueTime() {
         //双月
         if (month.value % 2 === 0) {
@@ -126,47 +148,10 @@
             }
         }       
     }
-
-
-    //main
-    init();
-    trueTime();
-
-    //选择过select后,开关on,时钟开始自动更新
-    let btn = 0, t;
-    //给每个select标签添加onchange事件
-    let node = document.querySelectorAll('select');
-    for (let v of [...node]) {
-        v.onchange = function () {
-            trueTime();
-            makeResult();
-            if (t == undefined) {
-                if (btn === 1) {
-                    t = setInterval(makeResult, 1000);
-                }
-            }
-            trueTime();
-        }
-    }
     
     //转换周几格式
     function getToday(day) {
-        if (day === 0) {
-                day = '日';
-            } else if (day === 1) {
-                day = '一';
-            } else if (day === 2) {
-                day = '二';
-            } else if (day === 3) {
-                day = '三';
-            } else if (day === 4) {
-                day = '四';
-            } else if (day === 5) {
-                day = '五';
-            } else {
-                day = '六';
-        }
-        return day;
+        return ('日一二三四五六')[day];
     }
 
     //首位补0

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮箱输入</title>
+    <style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li:hover {
+        background-color: skyblue;
+    }
+
+    .getRed {
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    
+    <script>
+
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+
+    let email = document.getElementById('email-input');
+    let sug = document.getElementById('email-sug-wrapper');
+
+    //基于数据的代码结构
+    // 增加一个变量，用于存储当前选中的提示Li的序号
+    var nowSelectTipIndex = 0;
+
+    email.onkeyup = function (e) {
+        //如果按键不是上下及回车重置选中状态()
+        if (e.keyCode !== 13 && e.keyCode !== 38 && e.keyCode !== 40) {
+            resetLi();
+        }
+        if (e.keyCode !== 13) {
+            addLi();
+            controlUl();
+        }
+    }
+
+    email.onkeydown = function(e) {
+        // enter
+        if (e.keyCode === 13) {
+            let n = sug.children[nowSelectTipIndex];
+            email.value = n.innerHTML;
+            hideUl();
+        }
+        // up
+        if (e.keyCode === 38) {
+            if (nowSelectTipIndex === 0) {
+                nowSelectTipIndex = sug.children.length - 1;
+            } else {
+                nowSelectTipIndex -= 1;
+            }
+        }
+        // down
+        if (e.keyCode === 40) {
+            if (nowSelectTipIndex === sug.children.length - 1) {
+                nowSelectTipIndex = 0;
+            } else {
+                nowSelectTipIndex += 1;
+            }
+        }
+        //按esc全选输入
+        if (e.keyCode === 27) {
+            email.select();
+        }
+    } 
+
+    sug.onclick = function(e) {
+        if (e.target.parentNode === sug) {
+            let value = e.target.innerHTML;
+            // 对提示框内容进行解码
+            value = decodeURI(value);
+            email.value = value;
+            hideUl();
+            email.focus();
+        }
+    }
+
+    window.onload = function () {
+        email.focus();
+    }
+
+    // 获取用户输入
+    function getInput() {
+        return email.value.trim();
+    }
+
+    // 生成提示框中的提示内容
+    function createLi() {
+        let input = getInput();
+        let arr = [];
+        let matchText = '', firText;
+        // 特殊字符进行转义编码
+        input = encodeURI(input);
+
+        //选取用户输入的@前面的字符来和后缀拼接
+        if (input.indexOf('@') !== -1) {
+            matchText = input.slice(input.indexOf('@') + 1);
+            input = input.slice(0, input.indexOf('@'));
+        }
+        // console.log(matchText);
+        for (let i = 0; i < postfixList.length; i++) {
+            if (postfixList[i].indexOf(matchText) !== -1) {
+                let ele = document.createElement('li');
+                let text = document.createTextNode(input + '@' + postfixList[i]);
+                ele.appendChild(text);
+                arr.push(ele);
+            }
+        }
+        // 将第nowSelectTipIndex个Li的样式设置为被选样式
+        arr[nowSelectTipIndex].className = 'getRed';
+
+        return arr;
+    }
+    
+    // 将提示内容添加到email-sug-wrapper中
+    function addLi() {
+        //删除之前的li
+        while(sug.children.length > 0) {
+            sug.removeChild(sug.lastElementChild);
+        }
+        let arr = createLi();
+        for (let v of arr) {
+            sug.appendChild(v);
+        }
+    }
+
+    // 控制email-sug-wrapper的显示/隐藏状态
+    function controlUl() {
+        if (getInput() === '') {
+            hideUl();
+        } else {
+            showUl();
+        }
+    }
+
+    // 隐藏提示框
+    function hideUl() {
+        sug.style.display = 'none';
+    }
+
+    //显示提示框
+    function showUl() {
+        sug.style.display = 'block';
+    }
+
+    // 置选中状态
+    function resetLi() {
+        nowSelectTipIndex = 0;
+    }
+
+    </script>
+</body>
+</html>
